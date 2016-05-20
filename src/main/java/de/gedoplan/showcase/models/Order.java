@@ -1,88 +1,76 @@
 package de.gedoplan.showcase.models;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.HashMap;
+import java.util.Map;
 
-@Entity
-@Table(name = "orders")
+/**
+ * Bestellungen
+ *
+ * @author Dominik Mathmann
+ */
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Map<String, String> additionalInfos = new HashMap<>();
+
+    /**
+     * JsonAnySetter wird für jedes Attribut aufgerufen welches im JSON
+     * vorhanden ist aber nicht gemappt werden kann (weil keine Setter vorhanden
+     * sind).
+     *
+     * @param key
+     * @param value
+     */
+    @JsonAnySetter
+    public void addAdditionalInfos(String key, String value) {
+        this.additionalInfos.put(key, value);
+    }
+
+    /**
+     * Creator können verwendet werden um eine Factory Methode zu verwenden um das Objekt
+     * zu erzeugen. Parameter müssen mit "JsonProperty" deklariert werden. Ein "normales"
+     * Mapping findet im Anschluss statt.
+     * 
+     * @param rawFreight
+     * @param orderID 
+     */
+    @JsonCreator()
+    public Order(@JsonProperty("freight") Double rawFreight, @JsonProperty("orderID")Integer orderID) {
+        this.freight=rawFreight*1000;
+        this.orderID=null;
+    }
+    
+    
     private Integer orderID;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private Date requiredDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private Date shippedDate;
 
     private Double freight;
 
     private String shipName;
 
-    private String shipAddress;
-
-    private String shipCity;
-
-    private String shipRegion;
-
-    private String shipPostalCode;
-
-
-    private String shipCountry;
-
-    @JoinColumn(name = "CustomerID", referencedColumnName = "customerID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Customer customer;
-
-    @JoinColumn(name = "EmployeeID", referencedColumnName = "employeeID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Employee employee;
-
-    @JoinColumn(name = "ShipVia", referencedColumnName = "shipperID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Shipper shipVia;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
-    private Collection<OrderDetail> orderDetails;
-
-    public Order() {
-    }
-
+   
     public Order(Integer orderID) {
         this.orderID = orderID;
     }
 
-    public Order(Integer orderID, Date orderDate, double freight, String shipName, String shipAddress, String shipCity, String shipRegion, String shipPostalCode, String shipCountry) {
+    public Order(Integer orderID, Date orderDate, double freight, String shipName) {
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.freight = freight;
         this.shipName = shipName;
-        this.shipAddress = shipAddress;
-        this.shipCity = shipCity;
-        this.shipRegion = shipRegion;
-        this.shipPostalCode = shipPostalCode;
-        this.shipCountry = shipCountry;
     }
 
     public Integer getOrderID() {
@@ -133,54 +121,6 @@ public class Order implements Serializable {
         this.shipName = shipName;
     }
 
-    public String getShipAddress() {
-        return shipAddress;
-    }
-
-    public void setShipAddress(String shipAddress) {
-        this.shipAddress = shipAddress;
-    }
-
-    public String getShipCity() {
-        return shipCity;
-    }
-
-    public void setShipCity(String shipCity) {
-        this.shipCity = shipCity;
-    }
-
-    public String getShipRegion() {
-        return shipRegion;
-    }
-
-    public void setShipRegion(String shipRegion) {
-        this.shipRegion = shipRegion;
-    }
-
-    public String getShipPostalCode() {
-        return shipPostalCode;
-    }
-
-    public void setShipPostalCode(String shipPostalCode) {
-        this.shipPostalCode = shipPostalCode;
-    }
-
-    public String getShipCountry() {
-        return shipCountry;
-    }
-
-    public void setShipCountry(String shipCountry) {
-        this.shipCountry = shipCountry;
-    }
-
-    public Shipper getShipVia() {
-        return shipVia;
-    }
-
-    public void setShipVia(Shipper shipVia) {
-        this.shipVia = shipVia;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -203,6 +143,10 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         return "de.gedoplan.angular.rw.model.Orders[ orderID=" + orderID + " ]";
+    }
+
+    public Map<String, String> getAdditionalInfos() {
+        return additionalInfos;
     }
 
 }

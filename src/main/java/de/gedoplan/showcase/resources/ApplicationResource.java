@@ -5,7 +5,7 @@ import javax.ws.rs.core.Application;
 
 /**
  *
- * @author Mathmann
+ *  Mathmann
  */
 
 @ApplicationPath("/rest")

@@ -5,9 +5,13 @@ import java.util.Date;
 /**
  * Helfer-Klasse zur Erzeugung von Objekten
  *
- * @author Mathmann
+ *  Mathmann
  */
 public class ModelFactory {
+
+    public static Order getOrder() {
+        return new Order(90023, new Date(), 23.3, "U-203");
+    }
 
     private ModelFactory() {
     }

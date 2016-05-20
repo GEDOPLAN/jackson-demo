@@ -16,7 +16,7 @@ public class User implements Serializable{
     public User() {
     }
 
-    
+        
     public User(String login, String customerID) {
         this.login = login;
         this.customerID = customerID;
@@ -49,6 +49,13 @@ public class User implements Serializable{
     public void setCustomerID(String customerID) {
         this.customerID = customerID;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "login=" + login + '}';
+    }
+    
+    
 
     public static enum UserRole {
         ADMIN(UserRole.ADMINS),

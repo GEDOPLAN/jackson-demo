@@ -19,20 +19,20 @@ import javax.persistence.Id;
 @JsonIgnoreProperties({"contactName", "fax"})
 
 /**
- * JsonAutoDetect verändert die automatische Ermittlung der Attribute. Das
- * Beispiel hier würde die automatische Ermittlung von gettern/fields
- * deaktivieren und ausschließlich die Felder mit @JsonProperty verwenden.
+ * JsonAutoDetect veÃ¤ï¿½ndert die automatische Ermittlung der Attribute. Das
+ * Beispiel hier wÃ¼rde die automatische Ermittlung von gettern/fields
+ * deaktivieren und ausschlieÃŸlich die Felder mit @JsonProperty verwenden.
  */
 //@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE)
 /**
- * Markiert die Klasse "Customer" als nicht für JSON-Relevant. Referezen auf die
- * Klasse werden in JSON nicht aufgelöst.
+ * Markiert die Klasse "Customer" als nicht fÃ¼r JSON-Relevant. Referezen auf die
+ * Klasse werden in JSON nicht aufgelÃ¶st.
  */
 @JsonIgnoreType(true)
 
 /**
- * Überspringt Attribute nach bestimmten Regeln ihres Inhaltes. Z.b. können
- * leere Felder übersprungen werden (default: ALWAYS). Kann auch auf
+ * Ãœberspringt Attribute nach bestimmten Regeln ihres Inhaltes. Z.b. kÃ¶nnen
+ * leere Felder Ã¼bersprungen werden (default: ALWAYS). Kann auch auf
  * Attributsebene verwendet werden.
  */
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -54,20 +54,20 @@ public class Customer implements Serializable {
     private String companyName;
 
     /**
-     * Default Wert wird von Jackson nicht verwendet. Ausschließlich für
+     * Default Wert wird von Jackson nicht verwendet. AusschlieÃŸlich fÃ¼r
      * Zusatzmodule
      */
     @JsonProperty(defaultValue = "XX")
     private String contactTitle;
 
     /**
-     * Ignoriert Attribute vollständig
+     * Ignoriert Attribute vollstÃ¤ndig
      */
     @JsonIgnore
     private Collection<Order> orders;
 
     /**
-     * Format Vorgabe (in aller Regel für Datumsfelder)
+     * Format Vorgabe (in aller Regel fÃ¼r Datumsfelder)
      */
     @JsonFormat(pattern = "dd.MM.yyyy")
     private Date lastContact;

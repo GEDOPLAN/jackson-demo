@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html>     
     <head>
         <title>Jackson Demo</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,6 +8,25 @@
     <body>
         <ul>
             <li><a href="rest/basic" target="new">Basis Annotationen</a></li>
+            <li><a href="rest/seextend" target="new">Serialisierung Annotationen</a></li>
         </ul>
-    </body>
+        <h2>Post-JSON</h2>
+        <textarea cols="100" rows="15" id="json">
+            {
+                "orderID": 90023,
+                "orderDate": 1463751750716,
+                "requiredDate": null,
+                "shippedDate": null,
+                "freight": 23.3,
+                "shipName": "U-203",
+                "shipAddress": "Stieghorster Strasse 60",
+                "shipCity": "Bielefeld",
+                "shipRegion": "NRW",
+                "shipPostalCode": "33605",
+                "shipCountry": "Deutschland",
+                "shipVia": "DHL"
+            }
+        </textarea><button type="button" onclick="sendJSON(document.getElementById('json').value)">submit</button>
+
+        <script src="index.js" type="text/javascript"></script>
 </html>

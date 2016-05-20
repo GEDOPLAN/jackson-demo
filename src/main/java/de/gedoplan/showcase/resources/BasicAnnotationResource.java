@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 /**
  * Grundlegene Beispiele für die Verwendung von Jackson Annotationen.
  *
- * @author Mathmann
+ * @author Dominik Mathmann
  */
 @Path("basic")
 @Produces("application/json")
