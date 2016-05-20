@@ -1,10 +1,12 @@
 package de.gedoplan.showcase.models;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
@@ -15,10 +17,17 @@ import java.util.Map;
  *
  * @author Dominik Mathmann
  */
+/**
+ * Reihenfolge der Serialisierung angeben. Default/Ohne Angabe: wie hier
+ *
+ * @author Dominik Mathmann
+ */
+@JsonPropertyOrder({"shipName"})
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @JsonUnwrapped
     private Map<String, String> additionalInfos = new HashMap<>();
 
     /**
@@ -35,20 +44,44 @@ public class Order implements Serializable {
     }
 
     /**
-     * Creator können verwendet werden um eine Factory Methode zu verwenden um das Objekt
-     * zu erzeugen. Parameter müssen mit "JsonProperty" deklariert werden. Ein "normales"
-     * Mapping findet im Anschluss statt.
-     * 
+     * Unwrapper für Maps, fügt die Inhalte der Map dem JSON Objekt als
+     * Attribute hinzu.
+     *
+     * @return
+     */
+    @JsonAnyGetter
+    public Map<String, String> runtimeInfos() {
+        return this.additionalInfos;
+    }
+
+    /**
+     * Creator können verwendet werden um eine Factory Methode zu verwenden um
+     * das Objekt zu erzeugen. Parameter müssen mit "JsonProperty" deklariert
+     * werden. Ein "normales" Mapping findet im Anschluss statt.
+     *
      * @param rawFreight
-     * @param orderID 
+     * @param orderID
      */
     @JsonCreator()
-    public Order(@JsonProperty("freight") Double rawFreight, @JsonProperty("orderID")Integer orderID) {
-        this.freight=rawFreight*1000;
-        this.orderID=null;
+    public Order(@JsonProperty("freight") Double rawFreight, @JsonProperty("orderID") Integer orderID) {
+        this.freight = rawFreight * 1000;
+        this.orderID = null;
     }
-    
-    
+
+    /**
+     * Liefert eine eigene Repräsentation dieses Objektes.
+     * 
+     * @return 
+     */
+    @JsonValue
+    public String orderToCustomeJSON() {
+        return "RAWString";
+    }
+
+    public Order() {
+        this.additionalInfos.put("info1", "0");
+    }
+
     private Integer orderID;
 
     private Date orderDate;
@@ -61,12 +94,12 @@ public class Order implements Serializable {
 
     private String shipName;
 
-   
     public Order(Integer orderID) {
         this.orderID = orderID;
     }
 
     public Order(Integer orderID, Date orderDate, double freight, String shipName) {
+        this();
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.freight = freight;

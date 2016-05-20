@@ -10,18 +10,17 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * Weiteführende Beispiele im Bereich "Deserialization" GEDOPLAN, Dominik
- * Mathmann
+ * Weiteführende Beispiele im Bereich "Serialisierung/Deserialization"
  *
  * @author Dominik Mathmann
  */
-@Path("deextend")
+@Path("extended")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class DeserializationResource {
+public class MoreAnnitationResource {
 
     @POST
-    public void getOrder(Order order) {
+    public void setOrder(Order order) {
         System.out.println("Additional Infos: " + order.getAdditionalInfos());
         System.out.println("orderID: " + order.getOrderID());
         System.out.println("Freight: " + order.getFreight());

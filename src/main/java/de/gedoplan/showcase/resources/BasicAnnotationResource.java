@@ -8,7 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 /**
- * Grundlegene Beispiele für die Verwendung von Jackson Annotationen.
+ * Grundlegene Beispiele fÃ¼r die Verwendung von Jackson Annotationen.
  *
  * @author Dominik Mathmann
  */
