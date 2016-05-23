@@ -28,5 +28,18 @@
             }
         </textarea><button type="button" onclick="sendJSON(document.getElementById('json').value)">submit</button>
 
+        <br/>
+        <ul>
+            <li><a href="rest/custome" target="new">Custome Serializer/Deserializer</a></li>
+        </ul><br/>
+        <h2>Post-Custome Deserializer JSON</h2>
+        <textarea cols="100" rows="15" id="custome-json">
+            {
+                "generatedBy": "de.gedoplan.showcase.jackson.EmployeeSerializer",
+                "id": 2003,
+                "toString": "de.gedoplan.angular.rw.model.Employees[ employeeID=2003 ]"
+            }
+        </textarea><button type="button" onclick="sendJSONToCustome(document.getElementById('custome-json').value)">submit</button>
+
         <script src="index.js" type="text/javascript"></script>
 </html>

@@ -1,5 +1,7 @@
 package de.gedoplan.showcase.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -7,12 +9,14 @@ public class Shipper implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @JsonView
     private Integer shipperID;
 
     private String companyName;
 
     private String phone;
 
+    @JsonIgnore
     private Collection<Order> orders;
 
     public Shipper() {

@@ -19,12 +19,12 @@ import javax.ws.rs.core.MediaType;
 public class CustomeResource {
 
     @GET
-    public Employee getEmployee(){
+    public Employee getEmployee() {
         return ModelFactory.getEmployee();
     }
-    
+
     @POST
-    public void setEmployee(Employee emp){
+    public void setEmployee(Employee emp) {
         System.out.println(emp);
     }
 }

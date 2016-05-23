@@ -4,10 +4,10 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 /**
+ * Registrierung Webservices.
  *
- *  Mathmann
+ * Dominik Mathmann
  */
-
 @ApplicationPath("/rest")
 public class ApplicationResource extends Application {
 

@@ -25,14 +25,14 @@ public class MoreAnnitationResource {
         System.out.println("Additional Infos: " + order.getAdditionalInfos());
         System.out.println("orderID: " + order.getOrderID());
         System.out.println("Freight: " + order.getFreight());
-        
+
     }
 
     @GET
     public Order getOrder() {
         return ModelFactory.getOrder();
     }
-    
+
     @GET
     @Path("details")
     public OrderDetail getOrderDetail() {

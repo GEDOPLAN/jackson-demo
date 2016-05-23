@@ -5,7 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 
 /**
- *
+ * Beispiel für manuelles Deserialisieren.
+ * 
  * @author Dominik Mathmann
  */
 public class Deserialize {

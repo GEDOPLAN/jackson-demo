@@ -33,6 +33,10 @@ public class ModelFactory {
         return new Employee(2003, "Richard", "Nox", null, null, new Date(), new Date(), "Am Bahnhof 23", "Bielefeld", null, "33613", "Deutschland", null, null, null);
     }
 
+    public static Shipper getShipper() {
+        return new Shipper(99050, "Schmitz Lieferservice", "0178/4455660");
+    }
+
     private ModelFactory() {
     }
 
