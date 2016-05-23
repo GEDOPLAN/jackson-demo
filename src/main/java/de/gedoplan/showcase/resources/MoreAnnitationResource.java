@@ -2,6 +2,7 @@ package de.gedoplan.showcase.resources;
 
 import de.gedoplan.showcase.models.ModelFactory;
 import de.gedoplan.showcase.models.Order;
+import de.gedoplan.showcase.models.OrderDetail;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -30,5 +31,13 @@ public class MoreAnnitationResource {
     @GET
     public Order getOrder() {
         return ModelFactory.getOrder();
+    }
+    
+    @GET
+    @Path("details")
+    public OrderDetail getOrderDetail() {
+        Order order = ModelFactory.getOrder();
+        OrderDetail orderDetail = ModelFactory.getOrderDetail(order);
+        return orderDetail;
     }
 }
