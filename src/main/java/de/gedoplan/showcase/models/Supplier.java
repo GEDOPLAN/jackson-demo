@@ -10,14 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "suppliers")
 public class Supplier implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer supplierID;
 
     private String companyName;
@@ -42,7 +38,6 @@ public class Supplier implements Serializable {
 
     private String homePage;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier")
     private Collection<Product> products;
 
     public Supplier() {

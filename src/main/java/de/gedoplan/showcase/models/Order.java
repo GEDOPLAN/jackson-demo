@@ -3,13 +3,15 @@ package de.gedoplan.showcase.models;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,8 +21,6 @@ import java.util.Map;
  */
 /**
  * Reihenfolge der Serialisierung angeben. Default/Ohne Angabe: wie hier
- *
- * @author Dominik Mathmann
  */
 @JsonPropertyOrder({"shipName"})
 public class Order implements Serializable {
@@ -70,13 +70,18 @@ public class Order implements Serializable {
 
     /**
      * Liefert eine eigene Repräsentation dieses Objektes.
-     * 
-     * @return 
+     *
+     * @return
      */
     //@JsonValue
     public String orderToCustomeJSON() {
         return "RAWString";
     }
+
+    List<OrderDetail> orderDetails;
+
+    
+    private Employee employee;
 
     public Order() {
         this.additionalInfos.put("info1", "0");
@@ -180,6 +185,14 @@ public class Order implements Serializable {
 
     public Map<String, String> getAdditionalInfos() {
         return additionalInfos;
+    }
+
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
 }

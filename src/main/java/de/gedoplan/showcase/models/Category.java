@@ -2,34 +2,19 @@ package de.gedoplan.showcase.models;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "categories")
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "TINYINT")
+
     private Integer categoryID;
-    
+
     private String categoryName;
-    
-    @Column(columnDefinition = "MEDIUMTEXT")
+
     private String description;
-    
+
     private String picture;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+
     private Collection<Product> products;
 
     public Category() {
@@ -85,7 +70,7 @@ public class Category implements Serializable {
     public void setProducts(Collection<Product> products) {
         this.products = products;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;

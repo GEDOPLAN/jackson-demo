@@ -2,24 +2,11 @@ package de.gedoplan.showcase.models;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "products")
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productID;
 
     private String productName;
@@ -34,15 +21,10 @@ public class Product implements Serializable {
 
     private Short reorderLevel;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private Collection<OrderDetail> orderDetail;
 
-    @JoinColumn(name = "CategoryID", referencedColumnName = "CategoryID")
-    @ManyToOne
     private Category category;
 
-    @JoinColumn(name = "SupplierID", referencedColumnName = "SupplierID")
-    @ManyToOne
     private Supplier supplier;
 
     public Product() {

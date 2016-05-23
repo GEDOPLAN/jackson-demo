@@ -1,29 +1,19 @@
 package de.gedoplan.showcase.models;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import de.gedoplan.showcase.jackson.EmployeeDeserializer;
+import de.gedoplan.showcase.jackson.EmployeeSerializer;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-@Entity
-@Table(name = "employees")
+@JsonSerialize(using = EmployeeSerializer.class)
+@JsonDeserialize(using = EmployeeDeserializer.class)
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer employeeID;
 
     private String lastName;
@@ -34,10 +24,8 @@ public class Employee implements Serializable {
 
     private String titleOfCourtesy;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private Date birthDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private Date hireDate;
 
     private String address;
@@ -56,17 +44,12 @@ public class Employee implements Serializable {
 
     private String photo;
 
-    @Column(columnDefinition = "MEDIUMTEXT")
     private String notes;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
     private Collection<Order> orders;
 
-    @OneToMany(mappedBy = "reportsTo")
     private Collection<Employee> employees;
 
-    @JoinColumn(name = "ReportsTo", referencedColumnName = "employeeID")
-    @ManyToOne
     private Employee reportsTo;
 
     public Employee() {

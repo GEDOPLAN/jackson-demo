@@ -1,22 +1,19 @@
 package de.gedoplan.showcase.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "order_details")
+/**
+ * @see {@link Order}
+ */
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class OrderDetail implements Serializable {
-
+   
+    private Order order;
+    
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private Double unitPrice;
@@ -25,12 +22,6 @@ public class OrderDetail implements Serializable {
 
     private Float discount;
 
-    @JoinColumn(name = "OrderID", referencedColumnName = "orderID")
-    @ManyToOne
-    private Order order;
-
-    @JoinColumn(name = "ProductID", referencedColumnName = "productID")
-    @ManyToOne
     private Product product;
 
     public OrderDetail() {
