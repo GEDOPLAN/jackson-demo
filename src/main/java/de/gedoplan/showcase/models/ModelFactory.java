@@ -17,8 +17,6 @@ public class ModelFactory {
         List<OrderDetail> detailList=new ArrayList<OrderDetail>();
         OrderDetail orderDetail = getOrderDetail(order);
         detailList.add(orderDetail);
-        // hierbei handelt es sich um dieselbe Objektreferenz
-        detailList.add(orderDetail);
         order.setOrderDetails(detailList);
         return order;
     }
