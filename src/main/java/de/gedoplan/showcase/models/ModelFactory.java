@@ -23,6 +23,7 @@ public class ModelFactory {
         return order;
     }
 
+    
     public static OrderDetail getOrderDetail(Order order) {
         OrderDetail orderDetails = new OrderDetail(255, 4.5, (short) 2, 0);
         orderDetails.setOrder(order);
@@ -35,6 +36,11 @@ public class ModelFactory {
 
     public static Shipper getShipper() {
         return new Shipper(99050, "Schmitz Lieferservice", "0178/4455660");
+    }
+
+    public static Product getProduct() {
+        Product product=new Product(55667, "Rasierer E500", "1", 55.4, (short)120, (short)1, (short)0);
+        return product;
     }
 
     private ModelFactory() {

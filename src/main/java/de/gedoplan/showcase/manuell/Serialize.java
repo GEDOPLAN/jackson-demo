@@ -1,8 +1,8 @@
 package de.gedoplan.showcase.manuell;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.gedoplan.showcase.models.Customer;
 import de.gedoplan.showcase.models.ModelFactory;
+import de.gedoplan.showcase.models.Product;
 import java.io.IOException;
 
 /**
@@ -13,9 +13,9 @@ import java.io.IOException;
 public class Serialize {
 
     public static void main(String... args) throws IOException {
-        Customer customer = ModelFactory.getCustomer();
+        Product product = ModelFactory.getProduct();
 
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(System.out, customer);
+        mapper.writeValue(System.out, product);
     }
 }
