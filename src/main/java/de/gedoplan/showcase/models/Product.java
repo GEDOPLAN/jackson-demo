@@ -1,9 +1,8 @@
 package de.gedoplan.showcase.models;
 
-import java.io.Serializable;
 import java.util.Collection;
 
-public class Product implements Serializable {
+public class Product {
 
     private Integer productID;
 
@@ -50,10 +49,6 @@ public class Product implements Serializable {
 
     public void setProductID(Integer productID) {
         this.productID = productID;
-    }
-
-    public String getProductName() {
-        return productName;
     }
 
     public void setProductName(String productName) {

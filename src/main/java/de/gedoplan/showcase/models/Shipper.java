@@ -2,6 +2,8 @@ package de.gedoplan.showcase.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import de.gedoplan.showcase.models.views.DetailView;
+import de.gedoplan.showcase.models.views.ListView;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -9,13 +11,17 @@ public class Shipper implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @JsonView
     private Integer shipperID;
 
+    @JsonView(ListView.class)
+    private String fax;
+    
+    @JsonView(ListView.class)
     private String companyName;
 
+    @JsonView(DetailView.class)
     private String phone;
-
+    
     @JsonIgnore
     private Collection<Order> orders;
 
@@ -87,5 +93,15 @@ public class Shipper implements Serializable {
     public String toString() {
         return "de.gedoplan.angular.rw.model.Shippers[ shipperID=" + shipperID + " ]";
     }
+
+    public String getFax() {
+        return fax;
+    }
+
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+    
+    
 
 }
