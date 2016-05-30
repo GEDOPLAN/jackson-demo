@@ -1,8 +1,10 @@
 package de.gedoplan.showcase.resources;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import de.gedoplan.showcase.models.ModelFactory;
 import de.gedoplan.showcase.models.Order;
 import de.gedoplan.showcase.models.OrderDetail;
+import java.util.Date;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -25,6 +27,7 @@ public class MoreAnnitationResource {
         System.out.println("Additional Infos: " + order.getAdditionalInfos());
         System.out.println("orderID: " + order.getOrderID());
         System.out.println("Freight: " + order.getFreight());
+        System.out.println("Shipname: " + order.getShipName());
 
     }
 

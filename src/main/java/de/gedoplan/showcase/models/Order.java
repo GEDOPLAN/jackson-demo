@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.annotation.JsonView;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
@@ -94,6 +95,7 @@ public class Order implements Serializable {
 
     private Double freight;
 
+    @JsonView(Date.class)
     private String shipName;
 
     public Order(Integer orderID) {
