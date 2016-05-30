@@ -9,13 +9,16 @@ Die vorhadenen Model-Klassen sind um entsprechende Jackson Annotationen erweiter
 
 **Annotationen**
  - de.gedoplan.showcase.models.Customer
-   - Basis Annotationen
+     - Basis Annotationen
+     
 - de.gedoplan.showcase.models.Order
-    - Deserialisierung
+      - Deserialisierung
+      
 - de.gedoplan.showcase.models.Employee
-    - Custome Serialisierung/Deserialisierung
+      - Custome Serialisierung/Deserialisierung
+      
 - de.gedoplan.showcase.models.Shipper
-    - JSONViews
+      - JSONViews
 
 **eigene Serialisierung / Deserialisierung**
  - de.gedoplan.showcase.jackson
