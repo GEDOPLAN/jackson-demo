@@ -3,6 +3,7 @@ package de.gedoplan.showcase.models;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
@@ -77,6 +78,7 @@ public class Order implements Serializable {
         return "RAWString";
     }
 
+    
     List<OrderDetail> orderDetails;
 
     private Employee employee;

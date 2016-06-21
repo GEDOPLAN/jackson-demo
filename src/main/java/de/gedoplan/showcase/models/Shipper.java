@@ -14,7 +14,7 @@ public class Shipper implements Serializable {
     @JsonView(JSONViews.Summary.class)
     private String fax;
 
-    @JsonView(JSONViews.Summary.class)
+    @JsonView({JSONViews.Summary.class})
     private String companyName;
 
     @JsonView(JSONViews.Details.class)
