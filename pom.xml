@@ -40,11 +40,23 @@
         </dependency>
    
    
-        <!--zusätzliche Abhängikeiten für Jersey (z.B. Glassfish 4.0) -->
+        <!--
+            zusätzliche Abhängikeiten für Jersey (z.B. Glassfish 4.0) .
+            Die passende Konfiguration erfolgt in der Klasse "JerseyApplicationResource"
+            Für die Verwendung im Wildfly können diese entfernt werden.
+        -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>2.15</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>2.10.4</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
