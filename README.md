@@ -27,4 +27,6 @@ Die vorhadenen Model-Klassen sind um entsprechende Jackson Annotationen erweiter
  - de.gedoplan.showcase.manuell
 
 
-
+* Update 21.06.2016*
+- Beispiel für Jackson und Glassfish 4 hinzugefügt
+- Blog: https://javaeeblog.wordpress.com/?p=2067
