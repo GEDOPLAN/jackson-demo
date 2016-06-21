@@ -1,8 +1,12 @@
 package de.gedoplan.showcase.resources.system;
 
+import de.gedoplan.showcase.resources.BasicAnnotationResource;
+import java.util.HashSet;
+import java.util.Set;
 import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.jackson.JacksonFeature;
-import org.glassfish.jersey.server.ResourceConfig;
 
 /**
  * Registrierung Webservices.
@@ -10,12 +14,14 @@ import org.glassfish.jersey.server.ResourceConfig;
  * Dominik Mathmann
  */
 @ApplicationPath("/rest")
-public class ApplicationResource extends ResourceConfig {
+public class ApplicationResource extends Application {
 
-    public ApplicationResource() {
-        System.out.println("Register JacksonFeature...");
-        super.packages("de.gedoplan.showcase.resources")
-                .register(JacksonFeature.class);
+    @Override
+    public Set<Object> getSingletons() {
+        final Set<Object> instances = new HashSet<Object>();
+        instances.add(new JacksonFeature());
+        instances.add(new LoggingFilter());
+        return instances;
     }
 
 }
