@@ -64,7 +64,7 @@ public class Order implements Serializable {
      */
     @JsonCreator()
     public Order(@JsonProperty("freight") Double rawFreight, @JsonProperty("orderID") Integer orderID) {
-        this.freight = rawFreight * 1000;
+        this.freight = rawFreight != null ? rawFreight * 1000 : 0;
         this.orderID = null;
     }
 
@@ -78,7 +78,6 @@ public class Order implements Serializable {
         return "RAWString";
     }
 
-    
     List<OrderDetail> orderDetails;
 
     private Employee employee;
@@ -97,7 +96,6 @@ public class Order implements Serializable {
 
     private Double freight;
 
-    @JsonView(Date.class)
     private String shipName;
 
     public Order(Integer orderID) {
